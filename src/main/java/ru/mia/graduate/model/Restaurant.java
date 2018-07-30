@@ -1,14 +1,25 @@
 package ru.mia.graduate.model;
 
 
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Entity
+@Table(name="Restaurant")
 public class Restaurant {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
+
+    @Column(name="name")
     private String name;
+    @Column(name="votes")
     private AtomicInteger votes;
+
     private List<Integer> dishes ;
 
     public int getId() {

@@ -2,6 +2,7 @@ package ru.mia.graduate.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.mia.graduate.MainController;
@@ -30,7 +31,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	public void saveRestaurant(Restaurant theRestaurant) {
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		System.out.println("save or update / theBook="+theRestaurant);
+		System.out.println("save or update / theRestaurant="+theRestaurant);
 		// save the customer ... finally LOL
 		currentSession.saveOrUpdate(theRestaurant);
 		System.out.println("saved");
@@ -43,7 +44,15 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 	@Override
 	public void deleteRestaurant(int theId) {
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
 
+		// delete object with primary key
+		Query theQuery =
+				currentSession.createQuery("delete from Restaurant where id=:reastarauntId");
+		theQuery.setParameter("restarauntId", theId);
+
+		theQuery.executeUpdate();
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name="Dish")
 public class Dish {
 
-    private int restaurantId;
+    private int restaurant_Id;
 
     @Column(name="name")
     private String name;

@@ -32,32 +32,23 @@
 
 	<context:property-placeholder location="classpath:/db/postgres.properties" system-properties-mode="OVERRIDE"/>
 
-	<!--
-	<jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
-		<jdbc:script location="classpath:db/initDB.sql"/>
-		<jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
-	</jdbc:initialize-database>
 
-	<jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
-		<jdbc:script location="classpath:db/initDB.sql"/>
-		<jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
-	</jdbc:initialize-database>
--->
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
          <!--PostgreSQL  -->
-        <property name="driverClass" value="org.postgresql.Driver" />
-        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/postgre9?useSSL=true;useUnicode=true&amp;characterEncoding=utf8" />
-        <property name="user" value="postgres" />
-        <property name="password" value="miron" /> 
-       
-         
-         <!-- MYSQL
-        <property name="driverClass" value="com.mysql.jdbc.Driver" />
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?useSSL=false" />  
-        <property name="user" value="root" />
-        <property name="password" value="root" /> 
-        -->
+
+                <property name="driverClass" value="org.postgresql.Driver" />
+                <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/graduate?useSSL=true;useUnicode=true&amp;characterEncoding=utf8" />
+                <property name="user" value="user" />
+                <property name="password" value="user" />
+
+		<!--
+                          MYSQL
+                        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+                        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?useSSL=false" />
+                        <property name="user" value="root" />
+                        <property name="password" value="root" />
+                        -->
           
          
 
@@ -76,12 +67,13 @@
 		<property name="hibernateProperties">
 		   <props>
 		 
-		       <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		       <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 		      <prop key="hibernate.show_sql">true</prop>
 		      <!-- JDBC connection pool settings ... using built-in test pool -->
-        
+			   <prop key="hbm2ddl.auto">create</prop>
 		      
 		   </props>
+
 		</property>
    </bean>	  
 

@@ -5,13 +5,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.mia.graduate.MainController;
 import ru.mia.graduate.model.Restaurant;
+
 
 import java.util.List;
 
 
-
+@Transactional
 @Repository
 public class RestaurantDAOImpl implements RestaurantDAO {
 
@@ -50,7 +52,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		// delete object with primary key
 		Query theQuery =
 				currentSession.createQuery("delete from Restaurant where id=:reastarauntId");
-		theQuery.setParameter("restarauntId", theId);
+		theQuery.setParameter("reastarauntId", theId);
 
 		theQuery.executeUpdate();
 	}

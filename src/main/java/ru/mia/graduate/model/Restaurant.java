@@ -3,11 +3,11 @@ package ru.mia.graduate.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
-@Table(name="Restaurant")
+@Table(name="restaurants")
 public class Restaurant {
 
     @Id
@@ -17,10 +17,15 @@ public class Restaurant {
 
     @Column(name="name")
     private String name;
-    @Column(name="votes")
-    private AtomicInteger votes;
 
-    private List<Integer> dishes ;
+
+    @OneToMany(cascade = CascadeType.ALL,
+    orphanRemoval=true)
+    @JoinColumn(name = "restaurant_id")
+    private List<Dish> dishes ;
+
+    public Restaurant() {
+    }
 
     public int getId() {
         return id;
@@ -38,23 +43,22 @@ public class Restaurant {
         this.name = name;
     }
 
-    public AtomicInteger getVotes() {
-        return votes;
-    }
 
-    public void addVotes() {
-        this.votes.incrementAndGet();
-    }
-
-    public void removeVotes() {
-        this.votes.decrementAndGet();
-    }
-
-    public List<Integer> getDishes() {
+    public List<Dish> getDishes() {
         return dishes;
     }
 
-    public void setDishes(List<Integer> dishes) {
+    public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
+    }
+
+    public void addDish(Dish dish){
+        this.dishes.add(dish);
+    }
+
+    public Restaurant(String name)
+    {
+        this.name=name;
+        dishes=new ArrayList<Dish>();
     }
 }

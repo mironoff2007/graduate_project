@@ -11,7 +11,7 @@ public interface RestaurantDAO {
 
 	public void saveRestaurant (Restaurant theRestaurant);
 
-	public void getMaxIdRestaurant();
+    public void getMaxIdRestaurant();
 
 	void deleteRestaurant(int theId);
 

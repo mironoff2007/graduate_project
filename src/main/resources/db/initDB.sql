@@ -26,22 +26,13 @@ ALTER TABLE public.dishes
   OWNER TO "user";
 
 
-
-CREATE TABLE votes (
-  id               serial PRIMARY KEY ,
-  user_id          integer	              NOT NULL,
-  restaurant_id    integer                  DEFAULT NULL,
-  FOREIGN KEY (restaurant_id) REFERENCES restaurants (id) ON DELETE CASCADE
-);
-ALTER TABLE public.votes
-  OWNER TO "user";
-
-
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id          serial PRIMARY KEY ,
-  name        VARCHAR  NOT NULL
+  name        VARCHAR  NOT NULL,
+  vote        integer DEFAULT FALSE,
+  vote_time   VARCHAR
 );
 ALTER TABLE public.users
   OWNER TO "user";

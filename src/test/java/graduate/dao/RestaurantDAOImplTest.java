@@ -30,7 +30,7 @@ public class RestaurantDAOImplTest  {
 	}
 
 	@Test
-	public void save() throws Exception {
+	public void saveRestaurant() throws Exception {
 		Restaurant newRestaurant = new Restaurant("Rest1");
 		Dish dish1= new Dish("Dish1",10);
 		Dish dish2= new Dish("Dish2",20);
@@ -39,7 +39,16 @@ public class RestaurantDAOImplTest  {
 		restaurantDAO.saveRestaurant(newRestaurant);
 
 	}
+
+	@Test
+	public void saveGetAllRestaurants() throws Exception {
+
+	}
+
+
+
 }
+
 
 	
 

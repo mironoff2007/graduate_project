@@ -24,6 +24,7 @@ public class Restaurant {
     @JoinColumn(name = "restaurant_id")
     private List<Dish> dishes ;
 
+
     public Restaurant() {
     }
 

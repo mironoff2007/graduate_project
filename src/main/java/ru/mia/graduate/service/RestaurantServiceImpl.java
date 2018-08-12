@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
 
-	// need to inject book dao
+
 	@Autowired
-	private RestaurantDAO bookDAO;
+	private RestaurantDAO restaurantDAO;
 
 
 	@Override

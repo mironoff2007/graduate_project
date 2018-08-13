@@ -1,10 +1,16 @@
 package ru.mia.graduate.model;
 
 
+import org.springframework.util.CollectionUtils;
+
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.Set;
 
+@Entity
+@Table(name="users")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -51,19 +57,31 @@ public class User {
         this.name = name;
     }
 
-    public User(String name) {
-        this.name = name;
-    }
-
     public void setRoles(Collection<Role> roles) {
-        //this.roles = CollectionUtils.isEmpty(roles) ? Collections.emptySet() : EnumSet.copyOf(roles);
+        this.roles = CollectionUtils.isEmpty(roles) ? Collections.emptySet() : EnumSet.copyOf(roles);
     }
     public Set<Role> getRoles() {
         return roles;
     }
-    public User(String name, Collection<Role> roles) {
 
+    public User() {}
+
+    public User(String name) {
+        this.name =name;
+    }
+
+    public User(String name, Collection<Role> roles) {
         this.name =name;
         setRoles(roles);
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", vote_restaurant=" + vote_restaurant +
+                ", vote_time='" + vote_time + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

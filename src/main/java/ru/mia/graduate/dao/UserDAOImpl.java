@@ -2,6 +2,7 @@ package ru.mia.graduate.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,12 +30,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void saveUser(User theUser) {
-		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		System.out.println("save or update / theUser="+theUser);
-		// save the customer ... finally LOL
 		currentSession.saveOrUpdate(theUser);
-		System.out.println("saved");
+
 	}
 
 	@Override
@@ -44,12 +42,18 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void deleteUser(int theId) {
-		
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query theQuery =
+				currentSession.createQuery("delete from User where id=:userId1");
+		theQuery.setParameter("userId1", theId);
+		theQuery.executeUpdate();
 	}
 
 	@Override
 	public User getUser(int theId) {
-		return null;
+		Session currentSession = sessionFactory.getCurrentSession();
+		User theUser = (User) currentSession.get(User.class, theId);
+		return theUser;
 	}
 }
 

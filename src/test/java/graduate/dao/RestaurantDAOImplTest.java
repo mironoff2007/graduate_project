@@ -41,7 +41,7 @@ public class RestaurantDAOImplTest  {
 	}
 
 	@Test
-	public void saveGetAllRestaurants() throws Exception {
+	public void getAllRestaurants() throws Exception {
 
 	}
 

@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS dishes;
-DROP TABLE IF EXISTS votes;
 DROP TABLE IF EXISTS restaurants;
 
 
@@ -29,10 +28,10 @@ ALTER TABLE public.dishes
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-  id          serial PRIMARY KEY ,
-  name        VARCHAR  NOT NULL,
-  vote        integer DEFAULT FALSE,
-  vote_time   VARCHAR
+  id         		SERIAL PRIMARY KEY ,
+  name       		VARCHAR  NOT NULL,
+  vote_restaurant 	integer DEFAULT NULL,
+  vote_time   		VARCHAR DEFAULT NULL
 );
 ALTER TABLE public.users
   OWNER TO "user";
@@ -41,6 +40,7 @@ ALTER TABLE public.users
 
 CREATE TABLE user_roles
 (
+  id   SERIAL NOT NULL,
   user_id INTEGER NOT NULL,
   role    VARCHAR,
   CONSTRAINT user_roles_idx UNIQUE (user_id, role),

@@ -37,10 +37,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 		return null;
 	}
 
-	@Override
-	public void readRestaurant(int theId) {
-
-	}
 }
 
 

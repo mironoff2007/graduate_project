@@ -18,6 +18,4 @@ public interface RestaurantService {
 
 	public Restaurant getRestaurant(int theId);
 
-	public void readRestaurant(int theId);
-	
 }

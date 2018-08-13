@@ -18,6 +18,5 @@ public interface UserService {
 
 	public User getUser(int theId);
 
-	public void readUser(int theId);
 	
 }

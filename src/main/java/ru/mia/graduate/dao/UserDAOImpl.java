@@ -1,5 +1,6 @@
 package ru.mia.graduate.dao;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -30,9 +31,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void saveUser(User theUser) {
-		Session currentSession = sessionFactory.getCurrentSession();
+		Session currentSession = sessionFactory.openSession();
 		currentSession.saveOrUpdate(theUser);
-
+        currentSession.close();
 	}
 
 	@Override
@@ -42,18 +43,34 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void deleteUser(int theId) {
-		Session currentSession = sessionFactory.getCurrentSession();
-		Query theQuery =
-				currentSession.createQuery("delete from User where id=:userId1");
-		theQuery.setParameter("userId1", theId);
-		theQuery.executeUpdate();
-	}
+		Session currentSession = sessionFactory.openSession();
+        try {
+            currentSession.beginTransaction();
+            Query theQuery =
+                    currentSession.createQuery("delete from User where id=:userId1");
+            theQuery.setParameter("userId1", theId);
+            theQuery.executeUpdate();
+            currentSession.getTransaction().commit();
+        }
+        finally {
+            currentSession.close();
+        }
+
+    }
 
 	@Override
 	public User getUser(int theId) {
-		Session currentSession = sessionFactory.getCurrentSession();
-		User theUser = (User) currentSession.get(User.class, theId);
-		return theUser;
+        User theUser;
+        Session currentSession = sessionFactory.openSession();
+        try {
+            currentSession.beginTransaction();
+            theUser =  currentSession.get(User.class, theId);
+            currentSession.getTransaction().commit();
+        }
+        finally {
+            currentSession.close();
+        }
+        return theUser;
 	}
 }
 

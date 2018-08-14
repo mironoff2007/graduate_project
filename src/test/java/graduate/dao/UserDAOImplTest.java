@@ -54,12 +54,16 @@ public class UserDAOImplTest {
 
 	@Test
 	public void getUser() throws Exception {
-		System.out.println(userDAO.getUser(1).toString());
+            System.out.println("getUser1 - " + userDAO.getUser(1));
+            System.out.println("getUser2 - " + userDAO.getUser(3));
+
 	}
 
 	@Test
 	public void deleteUser() throws Exception {
-		userDAO.deleteUser(1);
+	    userDAO.deleteUser(1);
+        userDAO.deleteUser(2);
+        userDAO.deleteUser(3);
 	}
 
 }

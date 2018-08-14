@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2d2b4820-6108-49fa-b6bd-3b9143fef212" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/mia/graduate/dao/UserDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ru/mia/graduate/dao/UserDAOImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/graduate/dao/UserDAOImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/graduate/dao/UserDAOImplTest.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -880,7 +878,7 @@
       <workItem from="1534099916930" duration="3404000" />
       <workItem from="1534156176666" duration="12333000" />
       <workItem from="1534194180312" duration="260000" />
-      <workItem from="1534255504798" duration="4096000" />
+      <workItem from="1534255504798" duration="4270000" />
     </task>
     <task id="LOCAL-00001" summary="User DAO added">
       <created>1534167289864</created>
@@ -910,7 +908,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534194393755</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="UserDAO exceptions fixed">
+      <created>1534279612240</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1534279612240</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -946,7 +951,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25628000" />
+    <option name="totallyTimeSpent" value="25802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1298" height="770" extended-state="6" />
@@ -1048,7 +1053,8 @@
     <MESSAGE value="DateTimeUtil updated, test added" />
     <MESSAGE value="UserService implemented" />
     <MESSAGE value="UserDAO and Test implemented&#10;&#10;errors fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserDAO and Test implemented&#10;&#10;errors fixed" />
+    <MESSAGE value="UserDAO exceptions fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="UserDAO exceptions fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

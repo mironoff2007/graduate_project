@@ -6,7 +6,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.mia.graduate.MainController;
 
 import java.util.List;
 
@@ -18,25 +17,26 @@ public class BaseDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private MainController controller;
 
-    
     public void saveObject(Object theObject) {
         Session currentSession = sessionFactory.openSession();
-        currentSession.beginTransaction();
-        currentSession.saveOrUpdate(theObject);
-        currentSession.getTransaction().commit();
-        currentSession.close();
+        try {
+            currentSession.beginTransaction();
+            currentSession.saveOrUpdate(theObject);
+            currentSession.getTransaction().commit();
+        }
+       finally {
+            currentSession.close();
+        }
     }
 
 
-    public Object getObject(int theId) {
+    public Object getObject(int theId,Class clazz) {
         Object theObject;
         Session currentSession = sessionFactory.openSession();
         try {
             currentSession.beginTransaction();
-            theObject =  currentSession.get(Object.class, theId);
+            theObject =  currentSession.get(clazz, theId);
             currentSession.getTransaction().commit();
         }
         finally {
@@ -46,14 +46,19 @@ public class BaseDAO {
     }
 
    
-    public List<Object> getAllObjects(String name) {
+    public <T> List<T> getAllObjects(String name) {
         Session currentSession = sessionFactory.openSession();
-        currentSession.beginTransaction();
-        Query theQuery =
-                currentSession.createQuery("from "+name+" order by id");
-        currentSession.getTransaction().commit();
-        List<Object> objects = theQuery.list();
-        currentSession.close();
+        List<T> objects;
+        try {
+            currentSession.beginTransaction();
+            Query theQuery =
+                    currentSession.createQuery("from " + name + " order by id");
+            currentSession.getTransaction().commit();
+            objects = theQuery.list();
+        }
+        finally {
+            currentSession.close();
+        }
         return  objects;
     }
 
@@ -68,7 +73,7 @@ public class BaseDAO {
         try {
             currentSession.beginTransaction();
             Query theQuery =
-                    currentSession.createQuery("delete from "+name+" where id=:reastarauntId");
+                    currentSession.createQuery("delete from "+name+" where id=:"+name.toLowerCase()+"Id");
             theQuery.setParameter(name.toLowerCase()+"Id", theId);
             theQuery.executeUpdate();
             currentSession.getTransaction().commit();

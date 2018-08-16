@@ -1,6 +1,5 @@
 package ru.mia.graduate.dao;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -25,14 +24,23 @@ public class UserDAOImpl implements UserDAO {
 	private MainController controller;
 	
 	@Override
-	public List<User> getUsers(int page) {
-		return null;
+	public List<User> getAllUsers() {
+        Session currentSession = sessionFactory.openSession();
+        currentSession.beginTransaction();
+        Query theQuery =
+                currentSession.createQuery("from User order by id");
+        currentSession.getTransaction().commit();
+        List<User> users = theQuery.list();
+        currentSession.close();
+        return  users;
 	}
 
 	@Override
 	public void saveUser(User theUser) {
 		Session currentSession = sessionFactory.openSession();
+        currentSession.beginTransaction();
 		currentSession.saveOrUpdate(theUser);
+        currentSession.getTransaction().commit();
         currentSession.close();
 	}
 

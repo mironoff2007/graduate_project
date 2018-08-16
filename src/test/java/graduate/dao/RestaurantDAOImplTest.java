@@ -37,14 +37,23 @@ public class RestaurantDAOImplTest  {
 		newRestaurant.addDish(dish1);
 		newRestaurant.addDish(dish2);
 		restaurantDAO.saveRestaurant(newRestaurant);
-
 	}
 
 	@Test
 	public void getAllRestaurants() throws Exception {
-
+		restaurantDAO.getAllRestaurants();
+	}
+	@Test
+	public void getRestaurant() throws Exception {
+		System.out.println("getRestaurant1 - " + restaurantDAO.getRestaurant(1));
+		System.out.println("getRestaurant2 - " + restaurantDAO.getRestaurant(3));
 	}
 
+	@Test
+	public void deleteRestaurant() throws Exception {
+		restaurantDAO.deleteRestaurant(1);
+		restaurantDAO.deleteRestaurant(2);
+	}
 
 
 }

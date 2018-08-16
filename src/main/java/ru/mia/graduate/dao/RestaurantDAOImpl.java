@@ -17,26 +17,57 @@ import java.util.List;
 @Repository
 public class RestaurantDAOImpl implements RestaurantDAO {
 
-	// need to inject the session factory
+
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Autowired
 	private MainController controller;
-	
-	@Override
-	public List<Restaurant> getRestaurants(int page) {
-		return null;
-	}
+
+	@Autowired
+    private BaseDAO baseDAO;
 
 	@Override
 	public void saveRestaurant(Restaurant theRestaurant) {
-		// get current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-		System.out.println("save or update / theRestaurant="+theRestaurant);
-		// save the customer ... finally LOL
+		/*
+		Session currentSession = sessionFactory.openSession();
+		currentSession.beginTransaction();
 		currentSession.saveOrUpdate(theRestaurant);
-		System.out.println("saved");
+		currentSession.getTransaction().commit();
+		currentSession.close();
+		*/
+		baseDAO.saveObject(theRestaurant);
+
+	}
+
+	@Override
+	public Restaurant getRestaurant(int theId) {
+		Restaurant theRestaurant=(Restaurant)baseDAO.getObject(theId);
+		/*
+		Session currentSession = sessionFactory.openSession();
+		try {
+			currentSession.beginTransaction();
+			theRestaurant =  currentSession.get(Restaurant.class, theId);
+			currentSession.getTransaction().commit();
+		}
+		finally {
+			currentSession.close();
+		}
+		*/
+
+		return theRestaurant;
+	}
+
+	@Override
+	public List<Restaurant> getAllRestaurants() {
+		Session currentSession = sessionFactory.openSession();
+		currentSession.beginTransaction();
+		Query theQuery =
+				currentSession.createQuery("from Restaurant order by id");
+		currentSession.getTransaction().commit();
+		List<Restaurant> restaurants = theQuery.list();
+		currentSession.close();
+		return  restaurants;
 	}
 
 	@Override
@@ -46,21 +77,24 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 	@Override
 	public void deleteRestaurant(int theId) {
-		// get the current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-
-		// delete object with primary key
+		/*
+		Session currentSession = sessionFactory.openSession();
+		try {
+			currentSession.beginTransaction();
 		Query theQuery =
 				currentSession.createQuery("delete from Restaurant where id=:reastarauntId");
 		theQuery.setParameter("reastarauntId", theId);
-
 		theQuery.executeUpdate();
+			currentSession.getTransaction().commit();
+		}
+		finally {
+			currentSession.close();
+		}
+		*/
+		baseDAO.deleteObject(theId,"Restaurant");
 	}
 
-	@Override
-	public Restaurant getRestaurant(int theId) {
-		return null;
-	}
+
 }
 
 	

@@ -56,7 +56,11 @@ public class UserDAOImplTest {
 	public void getUser() throws Exception {
             System.out.println("getUser1 - " + userDAO.getUser(1));
             System.out.println("getUser2 - " + userDAO.getUser(3));
+	}
 
+	@Test
+	public void getAllUsers() throws Exception {
+		userDAO.getAllUsers();
 	}
 
 	@Test

@@ -21,6 +21,7 @@
  <spring.version>5.0.7.RELEASE</spring.version><org.aspectj-version>1.7.4</org.aspectj-version>
     <org.slf4j-version>1.7.5</org.slf4j-version>
     <hibernate.version>5.2.12.Final</hibernate.version>
+    <jackson-json.version>2.9.6</jackson-json.version>
   </properties>
 
 
@@ -187,11 +188,22 @@
       <version>9.1-901-1.jdbc4</version>
     </dependency>
 
-    <!-- MYSQL -->
+
+    <!--JSON-->
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.44</version>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson-json.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-hibernate5</artifactId>
+      <version>${jackson-json.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>${jackson-json.version}</version>
     </dependency>
 
   </dependencies>

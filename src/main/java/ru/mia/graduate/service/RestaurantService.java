@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface RestaurantService {
 
-	public List<Restaurant> getRestaurants(int page);
+	public List<Restaurant> getAllRestaurants();
 
 	public void saveRestaurant(Restaurant theRestaurant);
 

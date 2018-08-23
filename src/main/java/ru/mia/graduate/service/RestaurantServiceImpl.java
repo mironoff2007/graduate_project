@@ -18,7 +18,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 
 	@Override
-	public List<Restaurant> getRestaurants(int page) {
+	public List<Restaurant> getAllRestaurants() {
 		return null;
 	}
 

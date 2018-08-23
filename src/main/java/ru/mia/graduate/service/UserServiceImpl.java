@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public List<User> getUsers(int page) {
+	public List<User> getAllUsers() {
 		return null;
 	}
 

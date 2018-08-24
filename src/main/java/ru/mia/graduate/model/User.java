@@ -20,6 +20,12 @@ public class User {
     @Column(name="name")
     String name;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
     @Column(name="vote_restaurant")
     int vote_restaurant;
 
@@ -57,6 +63,14 @@ public class User {
         this.name = name;
     }
 
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) {this.email = email;}
+
+    public String getPassword() {return password;}
+
+    public void setPassword(String password) {this.password = password;}
+
     public void setRoles(Collection<Role> roles) {
         this.roles = CollectionUtils.isEmpty(roles) ? Collections.emptySet() : EnumSet.copyOf(roles);
     }
@@ -74,11 +88,14 @@ public class User {
         this.name =name;
         setRoles(roles);
     }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", vote_restaurant=" + vote_restaurant +
                 ", vote_time='" + vote_time + '\'' +
                 ", roles=" + roles +

@@ -14,7 +14,7 @@ import ru.mia.graduate.model.Restaurant;
 
 
 @ContextConfiguration({
-		"classpath:spring-servlet.xml"
+		"classpath:spring/spring-servlet.xml"
 })
 //
 @RunWith(SpringRunner.class)

@@ -18,7 +18,7 @@ import java.util.Set;
 
 
 @ContextConfiguration({
-		"classpath:spring-servlet.xml"
+        "classpath:spring/spring-servlet.xml"
 })
 //
 @RunWith(SpringRunner.class)

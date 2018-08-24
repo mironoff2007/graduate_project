@@ -12,10 +12,7 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
 
-	<jdbc:initialize-database data-source="myDataSource" enabled="${database.init}">
-		<jdbc:script location="classpath:db/${jdbc.initLocation}"/>
-		<jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
-	</jdbc:initialize-database>
+
 
     <!-- Step 1: Define Database DataSource / connection pool -->
 
@@ -28,9 +25,9 @@
          <!--PostgreSQL  -->
 
                 <property name="driverClass" value="org.postgresql.Driver" />
-                <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/graduate?useSSL=true;useUnicode=true&amp;characterEncoding=utf8" />
-                <property name="user" value="user" />
-                <property name="password" value="user" />
+                <property name="jdbcUrl" value="${database.url}" />
+                <property name="user" value="${database.username}" />
+                <property name="password" value="${database.password}" />
 
 		<!--
                           MYSQL
@@ -77,7 +74,10 @@
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
 
 
-	
+    <jdbc:initialize-database data-source="myDataSource" enabled="${database.init}">
+        <jdbc:script location="classpath:db/${jdbc.initLocation}"/>
+        <jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
+    </jdbc:initialize-database>
 	
 </beans>
 

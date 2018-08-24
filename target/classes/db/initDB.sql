@@ -30,6 +30,8 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id         		SERIAL PRIMARY KEY ,
   name       		VARCHAR  NOT NULL,
+  email         VARCHAR  NOT NULL,
+  password         VARCHAR  NOT NULL,
   vote_restaurant 	integer DEFAULT NULL,
   vote_time   		VARCHAR DEFAULT NULL
 );

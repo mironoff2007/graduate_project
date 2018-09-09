@@ -38,14 +38,14 @@ public class UserDAOImplTest {
 		Set<Role> roles = new HashSet<Role>();
 		roles.add(Role.ROLE_USER);
 		//
-		User newUser = new User("User1");
+		User newUser = new User("User1", "user@yandex.ru", "password");
 		newUser.setVote_restaurant(1);
 		newUser.setVote_time(DateTimeUtil.nowFormatted());
 		newUser.setRoles(roles);
 		userDAO.saveUser(newUser);
 		//
 		roles.add(Role.ROLE_ADMIN);
-		User newUser2 = new User("User2");
+		User newUser2 = new User("User2","user@yandex.ru", "password");
 		newUser2.setVote_restaurant(1);
 		newUser2.setRoles(roles);
 		newUser2.setVote_time(DateTimeUtil.nowFormatted());

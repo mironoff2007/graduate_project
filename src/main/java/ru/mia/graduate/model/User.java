@@ -80,15 +80,24 @@ public class User {
 
     public User() {}
 
-    public User(String name) {
+    public User(String name, String email, String password ) {
+
         this.name =name;
+        this.email =email;
+        this.password = password;
     }
 
     public User(String name, Collection<Role> roles) {
         this.name =name;
         setRoles(roles);
     }
+    public User(String name, String email, String password, Collection<Role> roles ) {
 
+        this.name =name;
+        this.email =email;
+        this.password = password;
+        setRoles(roles);
+    }
     @Override
     public String toString() {
         return "User{" +

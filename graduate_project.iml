@@ -12,7 +12,6 @@
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/src/main/webapp/resources" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -21,8 +20,11 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-db.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/resources/spring/spring-security.xml</file>
         </fileset>
-        <fileset id="web dispatcher servlet context" name="MVC dispatcher servlet context" removed="true" />
+        <fileset id="web dispatcher servlet context" name="MVC dispatcher servlet context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/webapp/resources/spring/spring-servlet.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>

@@ -32,8 +32,8 @@ CREATE TABLE users (
   name       		VARCHAR  NOT NULL,
   email         VARCHAR  NOT NULL,
   password         VARCHAR  NOT NULL,
-  vote_restaurant 	integer DEFAULT NULL,
-  vote_time   		VARCHAR DEFAULT NULL
+  vote_restaurant 	integer DEFAULT 0,
+  vote_time   		VARCHAR DEFAULT '2000-01-01 00:00'
 );
 ALTER TABLE public.users
   OWNER TO "user";

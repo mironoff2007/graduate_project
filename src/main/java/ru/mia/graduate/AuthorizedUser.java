@@ -1,10 +1,7 @@
-package ru.javawebinar.topjava;
+package ru.mia.graduate;
 
 
-import ru.mia.graduate.model.Role;
 import ru.mia.graduate.model.User;
-
-import java.util.Collection;
 
 public class AuthorizedUser extends org.springframework.security.core.userdetails.User {
     private static final long serialVersionUID = 1L;

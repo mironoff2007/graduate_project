@@ -10,7 +10,7 @@ import ru.mia.graduate.util.DateTimeUtil;
 import java.util.List;
 
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
 
